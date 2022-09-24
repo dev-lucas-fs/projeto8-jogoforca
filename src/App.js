@@ -17,6 +17,7 @@ function App() {
   const [lettersRevealed, setLettersRevealed] = useState(word.map(() => ""));
   const [hideWord, setHideWord] = useState(true);
   const [disabledKey, setDisabledKey] = useState(alphabet.map(() => true));
+  const [disabledGuessButton, setDisabledGuessButton] = useState(true);
   const [error, setError] = useState(0);
   const [win, setWin] = useState("black");
   const [plays, setPlays] = useState(0);
@@ -26,17 +27,21 @@ function App() {
     setLettersRevealed(word.map(() => ""));
     setDisabledKey(alphabet.map(() => false));
     setError(0);
+    setWin("black");
+    setDisabledGuessButton(false);
   }
 
   useEffect(() => {
     if (lettersRevealed.filter((value) => !value).length === 0) {
       setDisabledKey(alphabet.map(() => true));
       setWin("green");
+      setDisabledGuessButton(true);
     }
     if (error === 6) {
       setDisabledKey(alphabet.map(() => true));
       setWin("red");
       setLettersRevealed(word);
+      setDisabledGuessButton(true);
     }
   }, [plays]);
 
@@ -56,6 +61,18 @@ function App() {
     });
   }
 
+  function guessWord(userWord) {
+    if (userWord.toLowerCase() === word.join("").toLowerCase()) {
+      setWin("green");
+    } else {
+      setError(6);
+      setWin("red");
+    }
+    setDisabledKey(alphabet.map(() => true));
+    setLettersRevealed(word);
+    setDisabledGuessButton(true);
+  }
+
   return (
     <>
       <Container>
@@ -67,7 +84,7 @@ function App() {
           win={win}
         />
         <Keyboard disabledKey={disabledKey} handleKey={guessLetter} />
-        <Guess />
+        <Guess disabled={disabledGuessButton} guessWord={guessWord} />
       </Container>
     </>
   );
