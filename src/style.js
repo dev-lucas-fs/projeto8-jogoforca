@@ -55,7 +55,7 @@ export const Container = styled.div`
   padding: 10px;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto 1fr auto auto auto;
+  grid-template-rows: 1fr auto auto;
 
   &:nth-child(1) {
     grid-template-rows: 1/2;
@@ -65,11 +65,5 @@ export const Container = styled.div`
   }
   &:nth-child(3) {
     grid-template-rows: 3/4;
-  }
-  &:nth-child(4) {
-    grid-template-rows: 4/5;
-  }
-  &:nth-child(5) {
-    grid-template-rows: 5/6;
   }
 `;
