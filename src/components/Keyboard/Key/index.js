@@ -1,10 +1,12 @@
 import React from "react";
 import { Button, Container } from "./style";
 
-export default function Key({ letter, handleKey }) {
+export default function Key({ letter, handleKey, disabledKey }) {
   return (
     <Container>
-      <Button onClick={handleKey}>{letter}</Button>
+      <Button disabled={disabledKey} onClick={handleKey}>
+        {letter}
+      </Button>
     </Container>
   );
 }

@@ -13,6 +13,7 @@ export const Letter = styled.li`
   padding: 10px 0;
   border-bottom: 2px solid #333;
   text-align: center;
-  font-size: 1.4em;
-  font-weight: 400;
+  font-size: 1.6em;
+  font-weight: bold;
+  color: ${(props) => props.win};
 `;

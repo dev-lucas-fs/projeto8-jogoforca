@@ -1,10 +1,12 @@
 import { Container, Letter } from "./style";
 
-function Word({ letters }) {
+function Word({ letters, win }) {
   return (
     <Container>
       {letters.map((letter, i) => (
-        <Letter key={i}>{letter || ""}</Letter>
+        <Letter win={win} key={i}>
+          {letter || ""}
+        </Letter>
       ))}
     </Container>
   );
