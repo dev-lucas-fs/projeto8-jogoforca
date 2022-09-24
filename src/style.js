@@ -49,13 +49,18 @@ export const GlobalStyle = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
         font-size: 10px;
     }
+    * {
+        box-sizing: border-box;
+    }
 `;
 
 export const Container = styled.div`
   padding: 10px;
+  max-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto auto;
+  grid-template-rows: auto auto auto;
+  gap: 20px;
 
   &:nth-child(1) {
     grid-template-rows: 1/2;
