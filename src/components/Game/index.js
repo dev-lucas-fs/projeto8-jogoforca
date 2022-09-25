@@ -1,14 +1,25 @@
 import ChooseWordButton from "./ChooseWordButton";
 import Gallows from "./Gallows";
-import { Container } from "./style";
+import { Container, Left, Right } from "./style";
 import Word from "./Word";
 
-function Game({ lettersRevealed, handleChooseWordButton, error, win }) {
+function Game({
+  lettersRevealed,
+  handleChooseWordButton,
+  error,
+  win,
+  hideWord,
+}) {
   return (
     <Container>
-      <ChooseWordButton handleClick={handleChooseWordButton} />
-      <Gallows imageIndex={error} />
-      <Word win={win} letters={lettersRevealed} />
+      <Left>
+        <Gallows imageIndex={error} />
+      </Left>
+
+      <Right>
+        <ChooseWordButton handleClick={handleChooseWordButton} />
+        {!hideWord ? <Word win={win} letters={lettersRevealed} /> : ""}
+      </Right>
     </Container>
   );
 }

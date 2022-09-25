@@ -3,7 +3,7 @@ import { Button, Container } from "./style";
 
 export default function Key({ letter, handleKey, disabledKey }) {
   return (
-    <Container>
+    <Container data-identifier="letter">
       <Button disabled={disabledKey} onClick={handleKey}>
         {letter}
       </Button>

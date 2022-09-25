@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
-export const Container = styled.ul`
+export const Container = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 10px;
-  justify-content: center;
+  align-items: center;
+`;
+
+export const Keys = styled.div`
+  display: flex;
+  gap: 10px;
 `;

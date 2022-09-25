@@ -4,7 +4,7 @@ export const Container = styled.ul`
   width: 100%;
   display: flex;
   gap: 10px;
-  justify-content: center;
+  justify-content: flex-end;
 `;
 
 export const Letter = styled.li`

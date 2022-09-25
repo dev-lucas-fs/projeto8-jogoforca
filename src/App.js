@@ -29,6 +29,7 @@ function App() {
     setError(0);
     setWin("black");
     setDisabledGuessButton(false);
+    setHideWord(false);
   }
 
   useEffect(() => {
@@ -84,7 +85,11 @@ function App() {
           win={win}
         />
         <Keyboard disabledKey={disabledKey} handleKey={guessLetter} />
-        <Guess disabled={disabledGuessButton} guessWord={guessWord} />
+        <Guess
+          hideWord={hideWord}
+          disabled={disabledGuessButton}
+          guessWord={guessWord}
+        />
       </Container>
     </>
   );

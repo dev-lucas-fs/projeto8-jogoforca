@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-export const Container = styled.li`
-  width: 100%;
-  max-width: 40px;
+export const Container = styled.div`
+  width: 40px;
 `;
 
 export const Button = styled.button`

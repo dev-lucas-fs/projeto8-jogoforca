@@ -13,8 +13,16 @@ function Guess({ guessWord, disabled }) {
   return (
     <Container>
       <Label>Já sei a palavra!</Label>
-      <Input value={value} onChange={(e) => setValue(e.target.value)} />
-      <Button disabled={disabled} onClick={(e) => handleSubmit(e)}>
+      <Input
+        data-identifier="type-guess"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
+      />
+      <Button
+        data-identifier="guess-button"
+        disabled={disabled}
+        onClick={(e) => handleSubmit(e)}
+      >
         Chutar
       </Button>
     </Container>

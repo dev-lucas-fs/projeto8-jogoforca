@@ -57,18 +57,11 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   padding: 10px;
   max-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto auto;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-
-  &:nth-child(1) {
-    grid-template-rows: 1/2;
-  }
-  &:nth-child(2) {
-    grid-template-rows: 2/3;
-  }
-  &:nth-child(3) {
-    grid-template-rows: 3/4;
+  @media (min-width: 1200px) {
+    max-width: 900px;
+    margin: 0 auto;
   }
 `;
