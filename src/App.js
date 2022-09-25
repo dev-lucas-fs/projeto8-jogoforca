@@ -7,24 +7,24 @@ import words from "./words";
 
 function randomWord() {
   words.sort(() => Math.random() - 0.5);
-  return words[1];
+  return words[1].normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 }
 
 const alphabet = "abcdefghijklmnopqrstuvwxyz".split("");
 
 function App() {
-  const [word, setWord] = useState(randomWord().split(""));
+  const [word, setWord] = useState([]);
   const [lettersRevealed, setLettersRevealed] = useState(word.map(() => ""));
   const [hideWord, setHideWord] = useState(true);
   const [disabledKey, setDisabledKey] = useState(alphabet.map(() => true));
   const [disabledGuessButton, setDisabledGuessButton] = useState(true);
   const [error, setError] = useState(0);
   const [win, setWin] = useState("black");
-  const [plays, setPlays] = useState(0);
 
   function chooseWord() {
-    setWord(randomWord().split(""));
-    setLettersRevealed(word.map(() => ""));
+    const newWord = randomWord().split("");
+    setWord(newWord);
+    setLettersRevealed(newWord.map(() => ""));
     setDisabledKey(alphabet.map(() => false));
     setError(0);
     setWin("black");
@@ -44,10 +44,9 @@ function App() {
       setLettersRevealed(word);
       setDisabledGuessButton(true);
     }
-  }, [plays]);
+  }, [lettersRevealed]);
 
   function guessLetter(letter) {
-    setPlays(plays + 1);
     const letterPosition = word.reduce((prev, curr, i) => {
       if (letter.toUpperCase() === curr.toUpperCase()) prev.push(i);
       return prev;
@@ -55,11 +54,12 @@ function App() {
 
     disabledKey[alphabet.indexOf(letter.toLowerCase())] = true;
     setDisabledKey([...disabledKey]);
+
     if (letterPosition.length === 0) setError(error + 1);
     letterPosition.forEach((i) => {
       lettersRevealed[i] = word[i];
-      setLettersRevealed([...lettersRevealed]);
     });
+    setLettersRevealed([...lettersRevealed]);
   }
 
   function guessWord(userWord) {
